@@ -22,8 +22,16 @@ function setTimer() {
     document.querySelector("#timer").innerHTML = time;
     if (time === 0) {
       clearInterval(timer);
-      document.querySelector(".play").style.display = "none";
       document.querySelector(".game-over").style.display = "block";
+      document.querySelector(".score-box").textContent = `${
+        document.querySelector("#score").innerHTML
+      }`;
+      document.querySelector("#score").innerHTML = 0;
+      document.querySelector("#hit").innerHTML = 0;
+      document.querySelector("#restart").addEventListener("click", function () {
+        document.querySelector(".game-over").style.display = "none";
+        play();
+      });
     }
   }, 1000);
 }
